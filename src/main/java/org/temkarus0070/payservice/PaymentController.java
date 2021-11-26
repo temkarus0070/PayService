@@ -14,12 +14,13 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @Autowired
-    public PaymentService getPaymentService() {
-        return paymentService;
+    public PaymentController(PaymentService paymentService){
+        this.paymentService=paymentService;
     }
 
+
     @PostMapping
-    public Order getPay(@RequestBody() Order order){
+    public Order getPay(@RequestBody() Order order) {
         return paymentService.checkPayment(order);
     }
 }
