@@ -12,7 +12,7 @@ import java.util.Random;
 @Service
 public class PaymentService {
 
-    @Value("${successProbability}")
+    @Value("${payService.successProbability}")
     private double probability;
 
     public Order checkPayment(Order order) {
@@ -20,8 +20,9 @@ public class PaymentService {
         double number = random.nextDouble();
         if (number < probability || probability - number < 1e-10) {
             order.setStatus(Status.PURCHASED);
-        } else
+        } else {
             order.setStatus(Status.CANCELLED);
+        }
         return order;
     }
 }

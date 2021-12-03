@@ -1,0 +1,9 @@
+server:
+ port:${SERVER_PORT:8080}
+payService:
+ successProbability:0.75
+spring:
+ application:
+  name:PaySERVICE
+logging:
+ org.temkarus0070.payservice:${LOGGING_LEVEL:INFO}

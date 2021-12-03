@@ -11,7 +11,7 @@ import org.temkarus0070.payservice.models.Order;
 @RequestMapping(path = "/payment")
 public class PaymentController {
 
-    private PaymentService paymentService;
+    private final PaymentService paymentService;
 
     @Autowired
     public PaymentController(PaymentService paymentService){
@@ -20,7 +20,7 @@ public class PaymentController {
 
 
     @PostMapping
-    public Order getPay(@RequestBody() Order order) {
+    public Order processPayment(@RequestBody() Order order) {
         return paymentService.checkPayment(order);
     }
 }
