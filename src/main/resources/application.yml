@@ -1,9 +1,9 @@
 server:
- port:${SERVER_PORT:8080}
+ port: ${SERVER_PORT:9089}
 payService:
- successProbability:0.75
+ successProbability: 0.75
 spring:
  application:
-  name:PaySERVICE
+  name: PaySERVICE
 logging:
- org.temkarus0070.payservice:${LOGGING_LEVEL:INFO}
+ org.temkarus0070.payservice: ${LOGGING_LEVEL:INFO}

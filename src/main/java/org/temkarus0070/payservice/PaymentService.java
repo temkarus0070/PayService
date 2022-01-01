@@ -11,14 +11,19 @@ import java.util.Random;
 
 @Service
 public class PaymentService {
+    final Random random;
+
+    public PaymentService() {
+        this.random = new Random(new Date().getTime());
+    }
 
     @Value("${payService.successProbability}")
     private double probability;
 
     public Order checkPayment(Order order) {
-        Random random = new Random(new Date().getTime());
+
         double number = random.nextDouble();
-        if (number < probability || probability - number < 1e-10) {
+        if (number < probability || Math.abs(probability - number) < 1e-10) {
             order.setStatus(Status.PURCHASED);
         } else {
             order.setStatus(Status.CANCELLED);
