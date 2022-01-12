@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 
-public @Data
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-class Order {
+public class Order {
     private String clientFIO;
     private long orderNum;
     private Collection<Good> goods;
