@@ -1,14 +1,14 @@
 server:
   port: ${SERVER_PORT:9089}
 payService:
-  successProbability: 0.75
+  successProbability: ${SUCCESS_PROBABILITY :0.75}
 
 project:
   title: payment system service
   description: proceed payment and return order with payment status
 spring:
   application:
-    name: PaySERVICE
+    name: payService
 logging:
   org.temkarus0070.payservice: ${LOGGING_LEVEL:INFO}
 

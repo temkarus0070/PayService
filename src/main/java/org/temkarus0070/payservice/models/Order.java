@@ -14,5 +14,4 @@ public class Order {
     private long orderNum;
     private Collection<Good> goods;
     private Status status;
-
 }
