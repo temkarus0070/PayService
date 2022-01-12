@@ -20,7 +20,7 @@ public class PaymentController {
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     public Order processPayment(@RequestBody(description = "order for payment", required = true, content = @Content(
-            schema = @Schema(implementation = Order.class))) Order order) {
+            schema = @Schema(implementation = Order.class))) @org.springframework.web.bind.annotation.RequestBody Order order) {
         return paymentService.checkPayment(order);
     }
 }
