@@ -19,10 +19,8 @@ import java.util.ArrayList;
 @AutoConfigureMockMvc
 public class PaymentControllerTest {
 
-
     private MockMvc mockMvc;
     private ObjectMapper objectMapper;
-
 
     @Autowired
     public void setObjectMapper(ObjectMapper objectMapper) {
@@ -35,26 +33,18 @@ public class PaymentControllerTest {
     }
 
     @Test
-    public void test() throws Exception {
+    public void testRestControllerWork() throws Exception {
         Order order = new Order("Pupkin", 44, new ArrayList<>(), Status.NEW);
         String json = objectMapper.writeValueAsString(order);
-
-
         final String contentAsString = mockMvc.perform(MockMvcRequestBuilders.post("/payment")
                         .accept(MediaType.APPLICATION_JSON)
                         .content(json)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString();
-
-
         final Order order1 = objectMapper.readValue(contentAsString, Order.class);
 
-
         Assertions.assertTrue(order1 != null && (order1.getStatus() == Status.CANCELLED || order1.getStatus() == Status.PURCHASED));
-
         order1.setStatus(order.getStatus());
-
-
         Assertions.assertEquals(order1, order);
     }
 }
