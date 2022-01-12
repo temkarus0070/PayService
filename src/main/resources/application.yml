@@ -2,7 +2,6 @@ server:
   port: ${SERVER_PORT:9089}
 payService:
   successProbability: ${SUCCESS_PROBABILITY :0.75}
-
 project:
   title: payment system service
   description: proceed payment and return order with payment status
@@ -11,9 +10,8 @@ spring:
     name: payService
 logging:
   org.temkarus0070.payservice: ${LOGGING_LEVEL:INFO}
-
-  springfox:
-    documentation:
-      swagger:
-        v2:
-          path: /swagger/json
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /swagger/json

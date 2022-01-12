@@ -11,15 +11,13 @@ import org.temkarus0070.payservice.models.Status;
 public class PaymentServiceTest {
     private PaymentService paymentService;
 
-
     @Autowired
     public void setPaymentService(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 
     @Test
-    public void test() {
-
+    public void testCheckPaymentFunction() {
         Order order = new Order();
         Order proceedOrder = paymentService.checkPayment(order);
         Assertions.assertTrue(proceedOrder.getStatus() == Status.PURCHASED || proceedOrder.getStatus() == Status.CANCELLED);

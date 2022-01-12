@@ -14,11 +14,9 @@ public class PaymentController {
 
     private final PaymentService paymentService;
 
-
     public PaymentController(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
-
 
     @PostMapping(produces = "application/json", consumes = "application/json")
     public Order processPayment(@RequestBody(description = "order for payment", required = true, content = @Content(
