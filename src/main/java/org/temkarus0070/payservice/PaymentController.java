@@ -1,9 +1,10 @@
 package org.temkarus0070.payservice;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.temkarus0070.payservice.models.Order;
@@ -18,9 +19,10 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
+    @Operation(requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "order for payment", required = true, content = @Content(
+            schema = @Schema(implementation = Order.class))))
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public Order processPayment(@RequestBody(description = "order for payment", required = true, content = @Content(
-            schema = @Schema(implementation = Order.class))) @org.springframework.web.bind.annotation.RequestBody Order order) {
+    public Order processPayment(@RequestBody Order order) {
         return paymentService.checkPayment(order);
     }
 }
