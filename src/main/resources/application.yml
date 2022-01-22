@@ -10,14 +10,21 @@ spring:
     name: payService
 logging:
   org.temkarus0070.payservice: ${LOGGING_LEVEL:INFO}
-springfox:
-  documentation:
-    swagger:
-      v2:
-        path: /swagger/json
+
 
 opentracing.jaeger:
   udp-sender:
     host: ${JAEGER_HOST:localhost}
     port: 6831
   log-spans: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
